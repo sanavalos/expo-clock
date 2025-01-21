@@ -21,9 +21,23 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#F5F5F5",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 20,
+  },
+  bigClockContainer: {
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  timezoneName: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  currentTime: {
+    fontSize: 48,
+    fontWeight: "bold",
   },
 });
 
