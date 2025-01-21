@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import moment from "moment-timezone";
 
@@ -7,6 +7,14 @@ const App = () => {
   const [currentTime, setCurrentTime] = useState(
     moment().tz(selectedTimezone).format("HH:mm:ss")
   );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(moment().tz(selectedTimezone).format("HH:mm:ss"));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [selectedTimezone]);
 
   return (
     <View style={styles.container}>
