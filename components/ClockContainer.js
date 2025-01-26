@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text } from "react-native";
 import { formatTimezone, dateOptions } from "../utils/formatters";
+import { styled } from "nativewind";
+
+const StyledView = styled(View);
+const StyledText = styled(Text);
 
 function ClockContainer() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -17,27 +21,13 @@ function ClockContainer() {
   }, []);
 
   return (
-    <View style={styles.bigClockContainer}>
-      <Text style={styles.timezoneName}>{formatTimezone(currentLocation)}</Text>
-      <Text style={styles.currentTime}>{currentTime}</Text>
-    </View>
+    <StyledView className="object-center">
+      <StyledText className="font-bold leading-5">
+        {formatTimezone(currentLocation)}
+      </StyledText>
+      <StyledText className="text-center text-4xl">{currentTime}</StyledText>
+    </StyledView>
   );
 }
-
-const styles = StyleSheet.create({
-  bigClockContainer: {
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  timezoneName: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 10,
-  },
-  currentTime: {
-    fontSize: 48,
-    fontWeight: "bold",
-  },
-});
 
 export default ClockContainer;
