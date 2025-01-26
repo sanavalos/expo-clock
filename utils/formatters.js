@@ -8,3 +8,10 @@ export const formatTimezone = (timezone) => {
   }
   return timezone;
 };
+
+export const dateOptions = {
+  hour12: false,
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
+};
