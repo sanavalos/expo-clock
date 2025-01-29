@@ -6,7 +6,7 @@ import {
   StyleSheet,
   FlatList,
   Modal,
-  TouchableWithoutFeedback,
+  Pressable,
   Platform,
 } from "react-native";
 import { styled } from "nativewind";
@@ -52,7 +52,7 @@ function TimezonesDropdown() {
       </TouchableOpacity>
       {expanded ? (
         <Modal visible={expanded} transparent>
-          <TouchableWithoutFeedback onPress={() => setExpanded(false)}>
+          <Pressable onPress={() => setExpanded(false)}>
             <StyledView style={styles.backdrop}>
               <StyledView
                 style={[
@@ -80,7 +80,7 @@ function TimezonesDropdown() {
                 />
               </StyledView>
             </StyledView>
-          </TouchableWithoutFeedback>
+          </Pressable>
         </Modal>
       ) : null}
     </StyledView>
