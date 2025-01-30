@@ -2,98 +2,57 @@ import React, { useCallback, useRef, useState } from "react";
 import {
   View,
   Text,
+  TextInput,
   TouchableOpacity,
   StyleSheet,
   FlatList,
-  Modal,
-  Pressable,
-  Platform,
 } from "react-native";
 import { styled } from "nativewind";
 import { timezonesList } from "../utils/timezones";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
+const StyledTextInput = styled(TextInput);
 
 function TimezonesDropdown() {
   const buttonRef = useRef(null);
-
-  const [expanded, setExpanded] = useState(false);
-  const [value, setValue] = useState("");
-  const [top, setTop] = useState(0);
-
-  const toggleExpanded = useCallback(() => setExpanded(!expanded), [expanded]);
+  const [searchValue, setSearchValue] = useState("");
 
   const onSelect = useCallback((item) => {
-    setValue(item);
-    setExpanded(false);
+    setSearchValue(item);
   }, []);
 
   return (
-    <StyledView
-      ref={buttonRef}
-      onLayout={(event) => {
-        const layout = event.nativeEvent.layout;
-        const topOffset = layout.y;
-        const heightOfComponent = layout.height;
-        const finalValue =
-          topOffset + heightOfComponent + (Platform.OS === "android" ? -32 : 3);
-        setTop(finalValue);
-      }}
-    >
-      <TouchableOpacity
+    <StyledView ref={buttonRef}>
+      <StyledTextInput
         style={styles.button}
-        activeOpacity={0.8}
-        onPress={toggleExpanded}
-      >
-        <StyledText style={styles.text}>
-          {value || "Select a Timezone"}
-        </StyledText>
-      </TouchableOpacity>
-      {expanded ? (
-        <Modal visible={expanded} transparent>
-          <Pressable onPress={() => setExpanded(false)}>
-            <StyledView style={styles.backdrop}>
-              <StyledView
-                style={[
-                  styles.options,
-                  {
-                    top,
-                  },
-                ]}
-              >
-                <FlatList
-                  keyExtractor={(item) => item}
-                  data={timezonesList}
-                  renderItem={({ item }) => (
-                    <TouchableOpacity
-                      activeOpacity={0.8}
-                      style={styles.optionItem}
-                      onPress={() => onSelect(item)}
-                    >
-                      <StyledText>{item}</StyledText>
-                    </TouchableOpacity>
-                  )}
-                  ItemSeparatorComponent={() => (
-                    <StyledView style={styles.separator} />
-                  )}
-                />
-              </StyledView>
-            </StyledView>
-          </Pressable>
-        </Modal>
-      ) : null}
+        value={searchValue}
+        onChangeText={(value) => setSearchValue(value)}
+        placeholder="Type your timezone"
+      />
+      <StyledView style={styles.options}>
+        <FlatList
+          keyExtractor={(item) => item}
+          data={timezonesList.filter((tz) =>
+            tz.toLowerCase().includes(searchValue.toLowerCase())
+          )}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={styles.optionItem}
+              onPress={() => onSelect(item)}
+            >
+              <StyledText>{item}</StyledText>
+            </TouchableOpacity>
+          )}
+          ItemSeparatorComponent={() => <StyledView style={styles.separator} />}
+        />
+      </StyledView>
     </StyledView>
   );
 }
 
 const styles = StyleSheet.create({
-  backdrop: {
-    padding: 20,
-    justifyContent: "center",
-    alignItems: "center",
-    flex: 1,
-  },
   optionItem: {
     height: 40,
     justifyContent: "center",
@@ -102,17 +61,13 @@ const styles = StyleSheet.create({
     height: 4,
   },
   options: {
-    position: "absolute",
+    position: "relative",
     backgroundColor: "white",
     width: "100%",
+    marginTop: 5,
     padding: 10,
     borderRadius: 6,
     maxHeight: 250,
-  },
-  text: {
-    fontSize: 15,
-    opacity: 0.8,
-    color: "black",
   },
   button: {
     height: 50,
