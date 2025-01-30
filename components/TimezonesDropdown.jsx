@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -17,36 +17,46 @@ const StyledTextInput = styled(TextInput);
 function TimezonesDropdown() {
   const buttonRef = useRef(null);
   const [searchValue, setSearchValue] = useState("");
+  const [selectedTimezone, setSelectedTimezone] = useState(false);
 
   const onSelect = useCallback((item) => {
     setSearchValue(item);
+    setSelectedTimezone(true);
   }, []);
+
+  useEffect(() => {
+    searchValue.length < 1 && setSelectedTimezone(false);
+  }, [searchValue]);
 
   return (
     <StyledView ref={buttonRef}>
-      <StyledTextInput
-        style={styles.button}
-        value={searchValue}
-        onChangeText={(value) => setSearchValue(value)}
-        placeholder="Type your timezone"
-      />
       <StyledView style={styles.options}>
-        <FlatList
-          keyExtractor={(item) => item}
-          data={timezonesList.filter((tz) =>
-            tz.toLowerCase().includes(searchValue.toLowerCase())
-          )}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              activeOpacity={0.8}
-              style={styles.optionItem}
-              onPress={() => onSelect(item)}
-            >
-              <StyledText>{item}</StyledText>
-            </TouchableOpacity>
-          )}
-          ItemSeparatorComponent={() => <StyledView style={styles.separator} />}
+        <StyledTextInput
+          style={styles.button}
+          value={searchValue}
+          onChangeText={(value) => setSearchValue(value)}
+          placeholder="Type your timezone"
         />
+        {!selectedTimezone && (
+          <FlatList
+            keyExtractor={(item) => item}
+            data={timezonesList.filter((tz) =>
+              tz.toLowerCase().includes(searchValue.toLowerCase())
+            )}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                activeOpacity={0.8}
+                style={styles.optionItem}
+                onPress={() => onSelect(item)}
+              >
+                <StyledText>{item}</StyledText>
+              </TouchableOpacity>
+            )}
+            ItemSeparatorComponent={() => (
+              <StyledView style={styles.separator} />
+            )}
+          />
+        )}
       </StyledView>
     </StyledView>
   );
