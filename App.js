@@ -12,9 +12,11 @@ NativeWindStyleSheet.setOutput({
 const StyledView = styled(View);
 
 const App = () => {
+  const currentDate = new Date();
+
   return (
     <StyledView className="flex-1 bg-gray-100 items-center justify-center py-5">
-      <ClockContainer />
+      <ClockContainer currentDate={currentDate} />
       <TimezonesDropdown />
     </StyledView>
   );
