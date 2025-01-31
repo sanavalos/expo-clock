@@ -6,8 +6,7 @@ import { styled } from "nativewind";
 const StyledView = styled(View);
 const StyledText = styled(Text);
 
-function ClockContainer() {
-  const [currentDate, setCurrentDate] = useState(new Date());
+function ClockContainer({ currentDate }) {
   const dateData = new Intl.DateTimeFormat("default", dateOptions);
   const [currentTime, setCurrentTime] = useState(dateData.format(currentDate));
   const currentLocation = dateData.resolvedOptions().timeZone;
