@@ -15,3 +15,13 @@ export const dateOptions = {
   minute: "numeric",
   second: "numeric",
 };
+
+export const getCurrentDateTimeForTimezone = (timeZone) => {
+  const now = new Date();
+  return new Intl.DateTimeFormat("en-US", {
+    ...dateOptions,
+    timeZone,
+    day: "2-digit",
+    month: "short",
+  }).format(now);
+};
