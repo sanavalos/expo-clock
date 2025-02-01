@@ -17,7 +17,9 @@ const App = () => {
   const [timezoneList, setTimezoneList] = useState([]);
 
   const addTimezoneToList = (newTimezone) => {
-    setTimezoneList((prev) => [...prev, newTimezone]);
+    if (!timezoneList.includes(newTimezone)) {
+      setTimezoneList((prev) => [...prev, newTimezone]);
+    }
   };
 
   return (
