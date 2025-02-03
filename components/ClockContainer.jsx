@@ -7,15 +7,17 @@ import { getCurrentDateTimeForTimezone } from "../utils/formatters";
 const StyledView = styled(View);
 const StyledText = styled(Text);
 
-function ClockContainer() {
+function ClockContainer({ timezoneOptionSelected }) {
   const currentTimezone = new Intl.DateTimeFormat().resolvedOptions().timeZone;
   const [currentTime, setCurrentTime] = useState(
-    getCurrentDateTimeForTimezone(currentTimezone)
+    getCurrentDateTimeForTimezone(currentTimezone, timezoneOptionSelected)
   );
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTime(getCurrentDateTimeForTimezone(currentTimezone));
+      setCurrentTime(
+        getCurrentDateTimeForTimezone(currentTimezone, timezoneOptionSelected)
+      );
     }, 1000);
 
     return () => clearInterval(interval);

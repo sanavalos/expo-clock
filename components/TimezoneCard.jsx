@@ -6,14 +6,16 @@ import { getCurrentDateTimeForTimezone } from "../utils/formatters";
 const StyledView = styled(View);
 const StyledText = styled(Text);
 
-function TimezoneCard({ timezone }) {
+function TimezoneCard({ timezone, timezoneOptionSelected }) {
   const [timezoneCurrentTime, setTimezoneCurrentTime] = useState(
-    getCurrentDateTimeForTimezone(timezone)
+    getCurrentDateTimeForTimezone(timezone, timezoneOptionSelected)
   );
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimezoneCurrentTime(getCurrentDateTimeForTimezone(timezone));
+      setTimezoneCurrentTime(
+        getCurrentDateTimeForTimezone(timezone, timezoneOptionSelected)
+      );
     }, 1000);
 
     return () => clearInterval(interval);
