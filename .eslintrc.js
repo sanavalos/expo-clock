@@ -11,5 +11,10 @@ module.exports = {
         trailingComma: "none"
       }
     ]
+  },
+  globals: {
+    Intl: "readonly",
+    setInterval: "readonly",
+    clearInterval: "readonly"
   }
 };
