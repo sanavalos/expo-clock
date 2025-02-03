@@ -7,7 +7,7 @@ import { getCurrentDateTimeForTimezone } from "../utils/formatters";
 const StyledView = styled(View);
 const StyledText = styled(Text);
 
-function ClockContainer({ currentDate }) {
+function ClockContainer() {
   const currentTimezone = new Intl.DateTimeFormat().resolvedOptions().timeZone;
   const [currentTime, setCurrentTime] = useState(
     getCurrentDateTimeForTimezone(currentTimezone)

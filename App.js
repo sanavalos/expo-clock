@@ -13,7 +13,6 @@ NativeWindStyleSheet.setOutput({
 const StyledView = styled(View);
 
 const App = () => {
-  const currentDate = new Date();
   const [timezoneList, setTimezoneList] = useState([]);
 
   const addTimezoneToList = (newTimezone) => {
@@ -24,7 +23,7 @@ const App = () => {
 
   return (
     <StyledView className="flex-1 bg-gray-100 items-center justify-center py-5">
-      <ClockContainer currentDate={currentDate} />
+      <ClockContainer />
       {timezoneList.length > 0 && (
         <TimezonesCards timezoneList={timezoneList} />
       )}
