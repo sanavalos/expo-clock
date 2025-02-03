@@ -7,7 +7,7 @@ import TimezonesCards from "./components/TimezonesCards";
 
 // Snippet to fix nativewind for web: https://github.com/nativewind/nativewind/issues/470#issuecomment-1589092569
 NativeWindStyleSheet.setOutput({
-  default: "native",
+  default: "native"
 });
 
 const StyledView = styled(View);

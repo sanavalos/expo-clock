@@ -13,7 +13,7 @@ export const dateOptions = {
   hour12: false,
   hour: "numeric",
   minute: "numeric",
-  second: "numeric",
+  second: "numeric"
 };
 
 export const getCurrentDateTimeForTimezone = (timeZone) => {
@@ -22,6 +22,6 @@ export const getCurrentDateTimeForTimezone = (timeZone) => {
     ...dateOptions,
     timeZone,
     day: "2-digit",
-    month: "short",
+    month: "short"
   }).format(now);
 };

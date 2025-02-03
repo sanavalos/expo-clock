@@ -5,7 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  FlatList,
+  FlatList
 } from "react-native";
 import { styled } from "nativewind";
 import { timezonesList } from "../utils/timezones";
@@ -55,10 +55,10 @@ function TimezonesDropdown({ addTimezoneToList }) {
 const styles = StyleSheet.create({
   optionItem: {
     height: 40,
-    justifyContent: "center",
+    justifyContent: "center"
   },
   separator: {
-    height: 4,
+    height: 4
   },
   options: {
     position: "relative",
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     padding: 10,
     borderRadius: 6,
-    maxHeight: 250,
+    maxHeight: 250
   },
   button: {
     height: 50,
@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     paddingHorizontal: 15,
-    borderRadius: 8,
-  },
+    borderRadius: 8
+  }
 });
 
 export default TimezonesDropdown;
