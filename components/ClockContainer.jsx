@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { View, Text } from "react-native";
-import { formatTimezone, dateOptions } from "../utils/formatters";
+import { formatTimezone } from "../utils/formatters";
 import { styled } from "nativewind";
+import { getCurrentDateTimeForTimezone } from "../utils/formatters";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
 
 function ClockContainer({ currentDate }) {
-  const dateData = new Intl.DateTimeFormat("default", dateOptions);
-  const [currentTime, setCurrentTime] = useState(dateData.format(currentDate));
-  const currentLocation = dateData.resolvedOptions().timeZone;
+  const currentTimezone = new Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const [currentTime, setCurrentTime] = useState(
+    getCurrentDateTimeForTimezone(currentTimezone)
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTime(dateData.format(new Date()));
+      setCurrentTime(getCurrentDateTimeForTimezone(currentTimezone));
     }, 1000);
 
     return () => clearInterval(interval);
@@ -22,7 +24,7 @@ function ClockContainer({ currentDate }) {
   return (
     <StyledView className="object-center">
       <StyledText className="font-bold leading-5">
-        {formatTimezone(currentLocation)}
+        {formatTimezone(currentTimezone)}
       </StyledText>
       <StyledText className="text-center text-4xl">{currentTime}</StyledText>
     </StyledView>
