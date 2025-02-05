@@ -3,11 +3,15 @@ import { View, Text } from "react-native";
 import { formatTimezone } from "../utils/formatters";
 import { styled } from "nativewind";
 import { getCurrentDateTimeForTimezone } from "../utils/formatters";
+import { useTimezoneStore } from "../store";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
 
-function ClockContainer({ timezoneOptionSelected }) {
+function ClockContainer() {
+  const timezoneOptionSelected = useTimezoneStore(
+    (state) => state.timezoneOptionSelected
+  );
   const currentTimezone = new Intl.DateTimeFormat().resolvedOptions().timeZone;
   const [currentTime, setCurrentTime] = useState(
     getCurrentDateTimeForTimezone(currentTimezone, timezoneOptionSelected)
