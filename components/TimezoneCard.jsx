@@ -2,11 +2,16 @@ import React, { useState, useEffect } from "react";
 import { View, Text } from "react-native";
 import { styled } from "nativewind";
 import { getCurrentDateTimeForTimezone } from "../utils/formatters";
+import { useTimezoneStore } from "../store";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
 
-function TimezoneCard({ timezone, timezoneOptionSelected }) {
+function TimezoneCard({ timezone }) {
+  const timezoneOptionSelected = useTimezoneStore(
+    (state) => state.timezoneOptionSelected
+  );
+
   const [timezoneCurrentTime, setTimezoneCurrentTime] = useState(
     getCurrentDateTimeForTimezone(timezone, timezoneOptionSelected)
   );
