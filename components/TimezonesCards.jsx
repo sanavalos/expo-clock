@@ -5,14 +5,11 @@ import TimezoneCard from "./TimezoneCard";
 
 const StyledView = styled(View);
 
-function TimezonesCards({ timezoneList, timezoneOptionSelected }) {
+function TimezonesCards({ timezoneList }) {
   return (
     <StyledView className="flex-wrap flex-row">
       {timezoneList.map((timezone) => (
-        <TimezoneCard
-          timezone={timezone}
-          timezoneOptionSelected={timezoneOptionSelected}
-        />
+        <TimezoneCard timezone={timezone} />
       ))}
     </StyledView>
   );
