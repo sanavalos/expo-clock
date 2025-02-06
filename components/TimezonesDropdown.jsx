@@ -9,12 +9,17 @@ import {
 } from "react-native";
 import { styled } from "nativewind";
 import { timezonesList } from "../utils/timezones";
+import { useTimezoneStore } from "../store";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledTextInput = styled(TextInput);
 
-function TimezonesDropdown({ addTimezoneToList }) {
+function TimezonesDropdown() {
+  const addTimezoneToList = useTimezoneStore(
+    (state) => state.addTimezoneToList
+  );
+
   const buttonRef = useRef(null);
   const [searchValue, setSearchValue] = useState("");
 

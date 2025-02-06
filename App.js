@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { View } from "react-native";
 import { NativeWindStyleSheet, styled } from "nativewind";
 import ClockContainer from "./components/ClockContainer";
 import TimezonesDropdown from "./components/TimezonesDropdown";
 import TimezonesCards from "./components/TimezonesCards";
 import TimezoneSection from "./components/TimezoneSection";
+import { useTimezoneStore } from "./store";
 
 // Snippet to fix nativewind for web: https://github.com/nativewind/nativewind/issues/470#issuecomment-1589092569
 NativeWindStyleSheet.setOutput({
@@ -14,13 +15,7 @@ NativeWindStyleSheet.setOutput({
 const StyledView = styled(View);
 
 const App = () => {
-  const [timezoneList, setTimezoneList] = useState([]);
-
-  const addTimezoneToList = (newTimezone) => {
-    if (!timezoneList.includes(newTimezone)) {
-      setTimezoneList((prev) => [...prev, newTimezone]);
-    }
-  };
+  const timezoneList = useTimezoneStore((state) => state.timezoneList);
 
   return (
     <StyledView className="flex-1 bg-gray-100 items-center justify-center py-5">
@@ -29,7 +24,7 @@ const App = () => {
       {timezoneList.length > 0 && (
         <TimezonesCards timezoneList={timezoneList} />
       )}
-      <TimezonesDropdown addTimezoneToList={addTimezoneToList} />
+      <TimezonesDropdown />
     </StyledView>
   );
 };
