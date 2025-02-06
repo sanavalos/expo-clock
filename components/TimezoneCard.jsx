@@ -24,7 +24,7 @@ function TimezoneCard({ timezone }) {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [timezoneOptionSelected]);
 
   return (
     <StyledView className="bg-gray-400 p-8 w-sm h-4 m-3 justify-center">

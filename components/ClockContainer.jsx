@@ -25,7 +25,7 @@ function ClockContainer() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [timezoneOptionSelected]);
 
   return (
     <StyledView className="object-center">
