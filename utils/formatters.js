@@ -31,14 +31,25 @@ export const timezoneFormatOptions = {
   }
 };
 
+export const hourFormatOptions = {
+  twentyFour: {
+    hour12: false
+  },
+  twelve: {
+    hour12: true
+  }
+};
+
 export const getCurrentDateTimeForTimezone = (
   timeZone,
-  selectedTimezoneOption = "fullDateTime"
+  selectedTimezoneOption = "fullDateTime",
+  selectedHourOption = "twentyFour"
 ) => {
   const now = new Date();
 
   return new Intl.DateTimeFormat("en-US", {
     ...timezoneFormatOptions[selectedTimezoneOption.formatName],
+    ...hourFormatOptions[selectedHourOption.formatName],
     timeZone
   }).format(now);
 };
