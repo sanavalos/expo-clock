@@ -19,5 +19,12 @@ export const useTimezoneStore = create((set) => ({
           }
         : state.timezoneList
     );
+  },
+  removeTimezoneFromList: (removedTimezone) => {
+    set((state) => ({
+      timezoneList: state.timezoneList.filter(
+        (timezone) => timezone !== removedTimezone
+      )
+    }));
   }
 }));
