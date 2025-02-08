@@ -1,7 +1,7 @@
 import React from "react";
-import { Text, View, CheckBox } from "react-native";
+import { Text, View } from "react-native";
 import { styled } from "nativewind";
-import { timezoneOptionList } from "../utils/timezones";
+import { timezoneOptionList, hourOptionList } from "../utils/timezones";
 import { useTimezoneStore } from "../store";
 import ConfigurationOption from "./ConfigurationOption";
 
@@ -13,6 +13,13 @@ function TimezoneSection() {
   );
   const timezoneOptionSelected = useTimezoneStore(
     (state) => state.timezoneOptionSelected
+  );
+
+  const setHourOptionSelected = useTimezoneStore(
+    (state) => state.setHourOptionSelected
+  );
+  const hourOptionSelected = useTimezoneStore(
+    (state) => state.hourOptionSelected
   );
 
   return (

@@ -12,20 +12,32 @@ function ClockContainer() {
   const timezoneOptionSelected = useTimezoneStore(
     (state) => state.timezoneOptionSelected
   );
+  const hourOptionSelected = useTimezoneStore(
+    (state) => state.hourOptionSelected
+  );
+
   const currentTimezone = new Intl.DateTimeFormat().resolvedOptions().timeZone;
   const [currentTime, setCurrentTime] = useState(
-    getCurrentDateTimeForTimezone(currentTimezone, timezoneOptionSelected)
+    getCurrentDateTimeForTimezone(
+      currentTimezone,
+      timezoneOptionSelected,
+      hourOptionSelected
+    )
   );
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTime(
-        getCurrentDateTimeForTimezone(currentTimezone, timezoneOptionSelected)
+        getCurrentDateTimeForTimezone(
+          currentTimezone,
+          timezoneOptionSelected,
+          hourOptionSelected
+        )
       );
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [timezoneOptionSelected]);
+  }, [timezoneOptionSelected, hourOptionSelected]);
 
   return (
     <StyledView className="object-center">
