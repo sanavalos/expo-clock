@@ -6,7 +6,7 @@ const StyledView = styled(View);
 
 function ConfigurationOption({ list, optionSelected, setOptionSelected }) {
   return (
-    <>
+    <StyledView>
       {list.map((option) => (
         <StyledView className="flex-row" key={option.formatName}>
           <CheckBox
@@ -16,7 +16,7 @@ function ConfigurationOption({ list, optionSelected, setOptionSelected }) {
           <Text>{option.optionName}</Text>
         </StyledView>
       ))}
-    </>
+    </StyledView>
   );
 }
 

@@ -25,7 +25,7 @@ function TimezoneSection() {
   return (
     <StyledView>
       <Text>Timezones</Text>
-      <StyledView className="flex flex-column">
+      <StyledView className="flex flex-row">
         <ConfigurationOption
           list={timezoneOptionList}
           optionSelected={timezoneOptionSelected}
