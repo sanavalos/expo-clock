@@ -3,6 +3,7 @@ import { Text, View, CheckBox } from "react-native";
 import { styled } from "nativewind";
 import { timezoneOptionList } from "../utils/timezones";
 import { useTimezoneStore } from "../store";
+import ConfigurationOption from "./ConfigurationOption";
 
 const StyledView = styled(View);
 
@@ -15,20 +16,21 @@ function TimezoneSection() {
   );
 
   return (
-    <View>
+    <StyledView>
       <Text>Timezones</Text>
-      {timezoneOptionList.map((option) => (
-        <StyledView className="flex flex-row" key={option.formatName}>
-          <CheckBox
-            value={timezoneOptionSelected === option}
-            onValueChange={() =>
-              setTimezoneOptionSelected(option, option.formatName)
-            }
-          />
-          <Text>{option.optionName}</Text>
-        </StyledView>
-      ))}
-    </View>
+      <StyledView className="flex flex-column">
+        <ConfigurationOption
+          list={timezoneOptionList}
+          optionSelected={timezoneOptionSelected}
+          setOptionSelected={setTimezoneOptionSelected}
+        />
+        <ConfigurationOption
+          list={hourOptionList}
+          optionSelected={hourOptionSelected}
+          setOptionSelected={setHourOptionSelected}
+        />
+      </StyledView>
+    </StyledView>
   );
 }
 
