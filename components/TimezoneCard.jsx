@@ -11,7 +11,7 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledButton = styled(Button);
 
-function TimezoneCard({ timeZone }) {
+function TimeZoneCard({ timeZone }) {
   const timeZoneOptionSelected = useTimeZoneStore(
     (state) => state.timeZoneOptionSelected
   );
@@ -58,4 +58,4 @@ function TimezoneCard({ timeZone }) {
   );
 }
 
-export default TimezoneCard;
+export default TimeZoneCard;

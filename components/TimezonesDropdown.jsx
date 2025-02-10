@@ -16,7 +16,7 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledTextInput = styled(TextInput);
 
-function TimezonesDropdown() {
+function TimeZonesDropdown() {
   const addTimeZoneToList = useTimeZoneStore(
     (state) => state.addTimeZoneToList
   );
@@ -87,4 +87,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default TimezonesDropdown;
+export default TimeZonesDropdown;

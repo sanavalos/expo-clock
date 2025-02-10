@@ -1,18 +1,18 @@
 import React from "react";
 import { View } from "react-native";
 import { styled } from "nativewind";
-import TimezoneCard from "./TimezoneCard";
+import TimeZoneCard from "./TimeZoneCard";
 
 const StyledView = styled(View);
 
-function TimezonesCards({ timeZoneList }) {
+function TimeZonesCards({ timeZoneList }) {
   return (
     <StyledView className="flex-wrap flex-row">
       {timeZoneList.map((timeZone) => (
-        <TimezoneCard timeZone={timeZone} />
+        <TimeZoneCard timeZone={timeZone} />
       ))}
     </StyledView>
   );
 }
 
-export default TimezonesCards;
+export default TimeZonesCards;

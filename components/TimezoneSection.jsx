@@ -7,7 +7,7 @@ import ConfigurationOption from "./ConfigurationOption";
 
 const StyledView = styled(View);
 
-function TimezoneSection() {
+function TimeZoneSection() {
   const setTimeZoneOptionSelected = useTimeZoneStore(
     (state) => state.setTimeZoneOptionSelected
   );
@@ -41,4 +41,4 @@ function TimezoneSection() {
   );
 }
 
-export default TimezoneSection;
+export default TimeZoneSection;
