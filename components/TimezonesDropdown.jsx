@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { styled } from "nativewind";
 import { timezonesList } from "../utils/timezones";
+import { formatTimezone } from "../utils/formatters";
 import { useTimezoneStore } from "../store";
 
 const StyledView = styled(View);
@@ -47,7 +48,7 @@ function TimezonesDropdown() {
               style={styles.optionItem}
               onPress={() => onSelect(item)}
             >
-              <StyledText>{item}</StyledText>
+              <StyledText>{formatTimezone(item)}</StyledText>
             </TouchableOpacity>
           )}
           ItemSeparatorComponent={() => <StyledView style={styles.separator} />}
