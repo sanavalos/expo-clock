@@ -1,15 +1,15 @@
-export const formatTimezone = (timezone) => {
-  const parts = timezone.split("/");
+export const formatTimeZone = (timeZone) => {
+  const parts = timeZone.split("/");
   const partsCount = parts?.length;
   if (partsCount > 1) {
     const city = parts[partsCount - 1].replace("_", " ");
     const country = parts[partsCount - 2].replace("_", " ");
     return `${city}, ${country}`;
   }
-  return timezone;
+  return timeZone;
 };
 
-export const timezoneFormatOptions = {
+export const timeZoneFormatOptions = {
   fullDateTime: {
     hour12: false,
     hour: "numeric",
@@ -40,15 +40,15 @@ export const hourFormatOptions = {
   }
 };
 
-export const getCurrentDateTimeForTimezone = (
+export const getCurrentDateTimeForTimeZone = (
   timeZone,
-  selectedTimezoneOption = "fullDateTime",
+  selectedTimeZoneOption = "fullDateTime",
   selectedHourOption = "twentyFour"
 ) => {
   const now = new Date();
 
   return new Intl.DateTimeFormat("en-US", {
-    ...timezoneFormatOptions[selectedTimezoneOption.formatName],
+    ...timeZoneFormatOptions[selectedTimeZoneOption.formatName],
     ...hourFormatOptions[selectedHourOption.formatName],
     timeZone
   }).format(now);

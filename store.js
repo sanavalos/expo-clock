@@ -1,29 +1,29 @@
 import { create } from "zustand";
-import { timezoneOptionList, hourOptionList } from "./utils/timezones";
+import { timeZoneOptionList, hourOptionList } from "./utils/timezones";
 
-export const useTimezoneStore = create((set) => ({
-  timezoneOptionSelected: timezoneOptionList[0],
+export const useTimeZoneStore = create((set) => ({
+  timeZoneOptionSelected: timeZoneOptionList[0],
   hourOptionSelected: hourOptionList[0],
-  timezoneList: [],
-  setTimezoneOptionSelected: (selectedOption) => {
-    set(() => ({ timezoneOptionSelected: selectedOption }));
+  timeZoneList: [],
+  setTimeZoneOptionSelected: (selectedOption) => {
+    set(() => ({ timeZoneOptionSelected: selectedOption }));
   },
   setHourOptionSelected: (selectedOption) => {
     set(() => ({ hourOptionSelected: selectedOption }));
   },
-  addTimezoneToList: (newTimezone) => {
+  addTimeZoneToList: (newTimeZone) => {
     set((state) =>
-      !state.timezoneList.includes(newTimezone)
+      !state.timeZoneList.includes(newTimeZone)
         ? {
-            timezoneList: [...state.timezoneList, newTimezone]
+            timeZoneList: [...state.timeZoneList, newTimeZone]
           }
-        : state.timezoneList
+        : state.timeZoneList
     );
   },
-  removeTimezoneFromList: (removedTimezone) => {
+  removeTimeZoneFromList: (removedTimeZone) => {
     set((state) => ({
-      timezoneList: state.timezoneList.filter(
-        (timezone) => timezone !== removedTimezone
+      timeZoneList: state.timeZoneList.filter(
+        (timeZone) => timeZone !== removedTimeZone
       )
     }));
   }

@@ -1,35 +1,35 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { styled } from "nativewind";
-import { timezoneOptionList, hourOptionList } from "../utils/timezones";
-import { useTimezoneStore } from "../store";
+import { timeZoneOptionList, hourOptionList } from "../utils/timezones";
+import { useTimeZoneStore } from "../store";
 import ConfigurationOption from "./ConfigurationOption";
 
 const StyledView = styled(View);
 
 function TimezoneSection() {
-  const setTimezoneOptionSelected = useTimezoneStore(
-    (state) => state.setTimezoneOptionSelected
+  const setTimeZoneOptionSelected = useTimeZoneStore(
+    (state) => state.setTimeZoneOptionSelected
   );
-  const timezoneOptionSelected = useTimezoneStore(
-    (state) => state.timezoneOptionSelected
+  const timeZoneOptionSelected = useTimeZoneStore(
+    (state) => state.timeZoneOptionSelected
   );
 
-  const setHourOptionSelected = useTimezoneStore(
+  const setHourOptionSelected = useTimeZoneStore(
     (state) => state.setHourOptionSelected
   );
-  const hourOptionSelected = useTimezoneStore(
+  const hourOptionSelected = useTimeZoneStore(
     (state) => state.hourOptionSelected
   );
 
   return (
     <StyledView>
-      <Text>Timezones</Text>
+      <Text>Time zones</Text>
       <StyledView className="flex flex-row">
         <ConfigurationOption
-          list={timezoneOptionList}
-          optionSelected={timezoneOptionSelected}
-          setOptionSelected={setTimezoneOptionSelected}
+          list={timeZoneOptionList}
+          optionSelected={timeZoneOptionSelected}
+          setOptionSelected={setTimeZoneOptionSelected}
         />
         <ConfigurationOption
           list={hourOptionList}

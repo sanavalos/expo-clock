@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { View, Text } from "react-native";
-import { formatTimezone } from "../utils/formatters";
+import { formatTimeZone } from "../utils/formatters";
 import { styled } from "nativewind";
-import { getCurrentDateTimeForTimezone } from "../utils/formatters";
-import { useTimezoneStore } from "../store";
+import { getCurrentDateTimeForTimeZone } from "../utils/formatters";
+import { useTimeZoneStore } from "../store";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
 
 function ClockContainer() {
-  const timezoneOptionSelected = useTimezoneStore(
-    (state) => state.timezoneOptionSelected
+  const timeZoneOptionSelected = useTimeZoneStore(
+    (state) => state.timeZoneOptionSelected
   );
-  const hourOptionSelected = useTimezoneStore(
+  const hourOptionSelected = useTimeZoneStore(
     (state) => state.hourOptionSelected
   );
 
-  const currentTimezone = new Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const currentTimeZone = new Intl.DateTimeFormat().resolvedOptions().timeZone;
   const [currentTime, setCurrentTime] = useState(
-    getCurrentDateTimeForTimezone(
-      currentTimezone,
-      timezoneOptionSelected,
+    getCurrentDateTimeForTimeZone(
+      currentTimeZone,
+      timeZoneOptionSelected,
       hourOptionSelected
     )
   );
@@ -28,21 +28,21 @@ function ClockContainer() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTime(
-        getCurrentDateTimeForTimezone(
-          currentTimezone,
-          timezoneOptionSelected,
+        getCurrentDateTimeForTimeZone(
+          currentTimeZone,
+          timeZoneOptionSelected,
           hourOptionSelected
         )
       );
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [timezoneOptionSelected, hourOptionSelected]);
+  }, [timeZoneOptionSelected, hourOptionSelected]);
 
   return (
     <StyledView className="object-center">
       <StyledText className="font-bold leading-5">
-        {formatTimezone(currentTimezone)}
+        {formatTimeZone(currentTimeZone)}
       </StyledText>
       <StyledText className="text-center text-4xl">{currentTime}</StyledText>
     </StyledView>

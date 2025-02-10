@@ -2,58 +2,58 @@ import React, { useState, useEffect } from "react";
 import { View, Text, Button } from "react-native";
 import { styled } from "nativewind";
 import {
-  getCurrentDateTimeForTimezone,
-  formatTimezone
+  getCurrentDateTimeForTimeZone,
+  formatTimeZone
 } from "../utils/formatters";
-import { useTimezoneStore } from "../store";
+import { useTimeZoneStore } from "../store";
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledButton = styled(Button);
 
-function TimezoneCard({ timezone }) {
-  const timezoneOptionSelected = useTimezoneStore(
-    (state) => state.timezoneOptionSelected
+function TimezoneCard({ timeZone }) {
+  const timeZoneOptionSelected = useTimeZoneStore(
+    (state) => state.timeZoneOptionSelected
   );
-  const hourOptionSelected = useTimezoneStore(
+  const hourOptionSelected = useTimeZoneStore(
     (state) => state.hourOptionSelected
   );
 
-  const removeTimezoneFromList = useTimezoneStore(
+  const removeTimeZoneFromList = useTimeZoneStore(
     (state) => state.removeTimezoneFromList
   );
 
-  const [timezoneCurrentTime, setTimezoneCurrentTime] = useState(
-    getCurrentDateTimeForTimezone(
-      timezone,
-      timezoneOptionSelected,
+  const [timeZoneCurrentTime, setTimeZoneCurrentTime] = useState(
+    getCurrentDateTimeForTimeZone(
+      timeZone,
+      timeZoneOptionSelected,
       hourOptionSelected
     )
   );
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimezoneCurrentTime(
-        getCurrentDateTimeForTimezone(
-          timezone,
-          timezoneOptionSelected,
+      setTimeZoneCurrentTime(
+        getCurrentDateTimeForTimeZone(
+          timeZone,
+          timeZoneOptionSelected,
           hourOptionSelected
         )
       );
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [timezoneOptionSelected, hourOptionSelected]);
+  }, [timeZoneOptionSelected, hourOptionSelected]);
 
   return (
     <StyledView className="bg-gray-400 py-2 px-8 w-sm m-3 justify-center">
       <StyledButton
-        onPress={() => removeTimezoneFromList(timezone)}
+        onPress={() => removeTimeZoneFromList(timeZone)}
         title="X"
         accessibilityLabel="Remove time zone from list"
       />
-      <StyledText>{formatTimezone(timezone)}</StyledText>
-      <StyledText>{timezoneCurrentTime}</StyledText>
+      <StyledText>{formatTimeZone(timeZone)}</StyledText>
+      <StyledText>{timeZoneCurrentTime}</StyledText>
     </StyledView>
   );
 }

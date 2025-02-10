@@ -1,6 +1,6 @@
-export const timezonesList = Intl.supportedValuesOf("timeZone");
+export const timeZonesList = Intl.supportedValuesOf("timeZone");
 
-export const timezoneOptionList = [
+export const timeZoneOptionList = [
   { optionName: "Full Date-Time", formatName: "fullDateTime" },
   { optionName: "Full Time", formatName: "fullTime" },
   { optionName: "Hour-Minute Only", formatName: "hourMinuteOnly" }
