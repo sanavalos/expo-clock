@@ -9,7 +9,7 @@ function TimeZonesCards({ timeZoneList }) {
   return (
     <StyledView className="flex-wrap flex-row">
       {timeZoneList.map((timeZone) => (
-        <TimeZoneCard timeZone={timeZone} />
+        <TimeZoneCard timeZone={timeZone} key={timeZone} />
       ))}
     </StyledView>
   );
