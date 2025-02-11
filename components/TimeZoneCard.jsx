@@ -15,7 +15,7 @@ function TimeZoneCard({ timeZone }) {
   );
 
   const removeTimeZoneFromList = useTimeZoneStore(
-    (state) => state.removeTimezoneFromList
+    (state) => state.removeTimeZoneFromList
   );
 
   const [timeZoneCurrentTime, setTimeZoneCurrentTime] = useState(
