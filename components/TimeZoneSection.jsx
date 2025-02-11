@@ -1,11 +1,8 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { styled } from "nativewind";
 import { timeZoneOptionList, hourOptionList } from "../utils/timezones";
 import { useTimeZoneStore } from "../store";
 import ConfigurationOption from "./ConfigurationOption";
-
-const StyledView = styled(View);
 
 function TimeZoneSection() {
   const setTimeZoneOptionSelected = useTimeZoneStore(
@@ -23,9 +20,9 @@ function TimeZoneSection() {
   );
 
   return (
-    <StyledView>
+    <View>
       <Text>Time zones</Text>
-      <StyledView className="flex flex-row">
+      <View className="flex flex-row">
         <ConfigurationOption
           list={timeZoneOptionList}
           optionSelected={timeZoneOptionSelected}
@@ -36,8 +33,8 @@ function TimeZoneSection() {
           optionSelected={hourOptionSelected}
           setOptionSelected={setHourOptionSelected}
         />
-      </StyledView>
-    </StyledView>
+      </View>
+    </View>
   );
 }
 

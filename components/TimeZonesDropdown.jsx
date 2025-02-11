@@ -7,14 +7,9 @@ import {
   StyleSheet,
   FlatList
 } from "react-native";
-import { styled } from "nativewind";
 import { timeZonesList } from "../utils/timezones";
 import { formatTimeZone } from "../utils/formatters";
 import { useTimeZoneStore } from "../store";
-
-const StyledView = styled(View);
-const StyledText = styled(Text);
-const StyledTextInput = styled(TextInput);
 
 function TimeZonesDropdown() {
   const addTimeZoneToList = useTimeZoneStore(
@@ -29,9 +24,9 @@ function TimeZonesDropdown() {
   };
 
   return (
-    <StyledView ref={buttonRef}>
-      <StyledView style={styles.options}>
-        <StyledTextInput
+    <View ref={buttonRef}>
+      <View style={styles.options}>
+        <TextInput
           style={styles.button}
           value={searchValue}
           onChangeText={(value) => setSearchValue(value)}
@@ -48,13 +43,13 @@ function TimeZonesDropdown() {
               style={styles.optionItem}
               onPress={() => onSelect(item)}
             >
-              <StyledText>{formatTimeZone(item)}</StyledText>
+              <Text>{formatTimeZone(item)}</Text>
             </TouchableOpacity>
           )}
-          ItemSeparatorComponent={() => <StyledView style={styles.separator} />}
+          ItemSeparatorComponent={() => <View style={styles.separator} />}
         />
-      </StyledView>
-    </StyledView>
+      </View>
+    </View>
   );
 }
 

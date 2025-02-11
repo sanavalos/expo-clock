@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { View, Text } from "react-native";
 import { formatTimeZone } from "../utils/formatters";
-import { styled } from "nativewind";
 import { getCurrentDateTimeForTimeZone } from "../utils/formatters";
 import { useTimeZoneStore } from "../store";
-
-const StyledView = styled(View);
-const StyledText = styled(Text);
 
 function ClockContainer() {
   const timeZoneOptionSelected = useTimeZoneStore(
@@ -40,12 +36,12 @@ function ClockContainer() {
   }, [timeZoneOptionSelected, hourOptionSelected]);
 
   return (
-    <StyledView className="object-center">
-      <StyledText className="font-bold leading-5">
+    <View className="object-center">
+      <Text className="font-bold leading-5">
         {formatTimeZone(currentTimeZone)}
-      </StyledText>
-      <StyledText className="text-center text-4xl">{currentTime}</StyledText>
-    </StyledView>
+      </Text>
+      <Text className="text-center text-4xl">{currentTime}</Text>
+    </View>
   );
 }
 

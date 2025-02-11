@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Button } from "react-native";
-import { styled } from "nativewind";
 import {
   getCurrentDateTimeForTimeZone,
   formatTimeZone
 } from "../utils/formatters";
 import { useTimeZoneStore } from "../store";
-
-const StyledView = styled(View);
-const StyledText = styled(Text);
-const StyledButton = styled(Button);
 
 function TimeZoneCard({ timeZone }) {
   const timeZoneOptionSelected = useTimeZoneStore(
@@ -46,15 +41,15 @@ function TimeZoneCard({ timeZone }) {
   }, [timeZoneOptionSelected, hourOptionSelected]);
 
   return (
-    <StyledView className="bg-gray-400 py-2 px-8 w-sm m-3 justify-center">
-      <StyledButton
+    <View className="bg-gray-400 py-2 px-8 w-sm m-3 justify-center">
+      <Button
         onPress={() => removeTimeZoneFromList(timeZone)}
         title="X"
         accessibilityLabel="Remove time zone from list"
       />
-      <StyledText>{formatTimeZone(timeZone)}</StyledText>
-      <StyledText>{timeZoneCurrentTime}</StyledText>
-    </StyledView>
+      <Text>{formatTimeZone(timeZone)}</Text>
+      <Text>{timeZoneCurrentTime}</Text>
+    </View>
   );
 }
 
