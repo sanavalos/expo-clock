@@ -40,7 +40,8 @@ function ClockContainer() {
       <Text className="font-bold leading-5">
         {formatTimeZone(currentTimeZone)}
       </Text>
-      <Text className="text-center text-4xl">{currentTime}</Text>
+      <Text className="text-5xl">{currentTime[0]}</Text>
+      <Text className="text-5xl">{currentTime[1]}</Text>
     </View>
   );
 }

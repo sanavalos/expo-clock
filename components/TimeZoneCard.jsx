@@ -47,8 +47,10 @@ function TimeZoneCard({ timeZone }) {
         title="X"
         accessibilityLabel="Remove time zone from list"
       />
-      <Text>{formatTimeZone(timeZone)}</Text>
-      <Text>{timeZoneCurrentTime}</Text>
+      <Text>
+        {formatTimeZone(timeZone)} - {timeZoneCurrentTime[0]}{" "}
+        {timeZoneCurrentTime[1]}
+      </Text>
     </View>
   );
 }

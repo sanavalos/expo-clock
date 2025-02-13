@@ -16,7 +16,7 @@ export const timeZoneFormatOptions = {
     minute: "numeric",
     second: "numeric",
     day: "2-digit",
-    month: "short"
+    weekday: "long"
   },
   fullTime: {
     hour12: false,
@@ -46,10 +46,10 @@ export const getCurrentDateTimeForTimeZone = (
   selectedHourOption = "twentyFour"
 ) => {
   const now = new Date();
-
-  return new Intl.DateTimeFormat("en-US", {
+  const dateTime = new Intl.DateTimeFormat("en-US", {
     ...timeZoneFormatOptions[selectedTimeZoneOption.formatName],
     ...hourFormatOptions[selectedHourOption.formatName],
     timeZone
   }).format(now);
+  return dateTime.split(", ");
 };
