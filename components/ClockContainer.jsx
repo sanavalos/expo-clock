@@ -36,8 +36,8 @@ function ClockContainer() {
   }, [timeZoneOptionSelected, hourOptionSelected]);
 
   return (
-    <View className="object-center">
-      <Text className="font-bold leading-5">
+    <View>
+      <Text className="text-5xl font-bold mb-4">
         {formatTimeZone(currentTimeZone)}
       </Text>
       <Text className="text-5xl">{currentTime[0]}</Text>

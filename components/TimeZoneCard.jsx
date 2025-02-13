@@ -41,16 +41,16 @@ function TimeZoneCard({ timeZone }) {
   }, [timeZoneOptionSelected, hourOptionSelected]);
 
   return (
-    <View className="bg-gray-400 py-2 px-8 w-sm m-3 justify-center">
+    <View className="bg-gray-400 py-2 pr-8 my-3 flex-row justify-between">
+      <Text className="text-2xl">
+        {formatTimeZone(timeZone)} - {timeZoneCurrentTime[0]}{" "}
+        {timeZoneCurrentTime[1]}
+      </Text>
       <Button
         onPress={() => removeTimeZoneFromList(timeZone)}
         title="X"
         accessibilityLabel="Remove time zone from list"
       />
-      <Text>
-        {formatTimeZone(timeZone)} - {timeZoneCurrentTime[0]}{" "}
-        {timeZoneCurrentTime[1]}
-      </Text>
     </View>
   );
 }

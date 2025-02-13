@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import { NativeWindStyleSheet } from "nativewind";
 import ClockContainer from "./components/ClockContainer";
 import TimeZonesDropdown from "./components/TimeZonesDropdown";
@@ -16,12 +16,13 @@ const App = () => {
   const timeZoneList = useTimeZoneStore((state) => state.timeZoneList);
 
   return (
-    <View className="flex-1 bg-gray-100 items-center justify-center py-5">
-      <TimeZoneSection />
-      <ClockContainer />
-      {timeZoneList.length > 0 && (
-        <TimeZonesCards timeZoneList={timeZoneList} />
-      )}
+    <View className="flex-1 bg-gray-100 items-start justify-center py-5 px-20">
+      <View className="mb-20">
+        <TimeZoneSection />
+        <ClockContainer />
+      </View>
+      <Text className="text-4xl">Time zones</Text>
+      <TimeZonesCards timeZoneList={timeZoneList} />
       <TimeZonesDropdown />
     </View>
   );
