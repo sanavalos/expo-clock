@@ -41,7 +41,7 @@ function TimeZoneCard({ timeZone }) {
   }, [timeZoneOptionSelected, hourOptionSelected]);
 
   return (
-    <View className="bg-gray-400 py-2 pr-8 my-3 flex-row justify-between">
+    <View className="bg-gray-400 py-2 pr-8 my-2 flex-row justify-between">
       <Text className="text-2xl">
         {formatTimeZone(timeZone)} - {timeZoneCurrentTime[0]}{" "}
         {timeZoneCurrentTime[1]}
