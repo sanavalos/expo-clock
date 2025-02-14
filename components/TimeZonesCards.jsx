@@ -1,15 +1,22 @@
 import React from "react";
-import { FlatList } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import TimeZoneCard from "./TimeZoneCard";
 
 function TimeZonesCards({ timeZoneList = [] }) {
   return (
-    <FlatList
-      keyExtractor={(item) => item}
-      data={timeZoneList}
-      renderItem={({ item }) => <TimeZoneCard timeZone={item} />}
-      className="w-full"
-    />
+    <View className="w-full">
+      {timeZoneList.length > 0 ? (
+        <FlatList
+          keyExtractor={(item) => item}
+          data={timeZoneList}
+          renderItem={({ item }) => <TimeZoneCard timeZone={item} />}
+        />
+      ) : (
+        <Text className="text-center text-xl text-gray-600">
+          No time zones on your list.
+        </Text>
+      )}
+    </View>
   );
 }
 
