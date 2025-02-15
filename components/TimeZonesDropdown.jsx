@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -16,7 +16,6 @@ function TimeZonesDropdown() {
     (state) => state.addTimeZoneToList
   );
 
-  const buttonRef = useRef(null);
   const [searchValue, setSearchValue] = useState("");
 
   const onSelect = (newTimeZone) => {
