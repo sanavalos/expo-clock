@@ -21,9 +21,11 @@ const App = () => {
         <TimeZoneSection />
         <ClockContainer />
       </View>
-      <Text className="text-4xl">Time zones</Text>
+      <View className="flex flex-row justify-between w-full">
+        <Text className="text-4xl self-center">Time zones</Text>
+        <TimeZonesDropdown />
+      </View>
       <TimeZonesCards timeZoneList={timeZoneList} />
-      <TimeZonesDropdown />
     </View>
   );
 };
