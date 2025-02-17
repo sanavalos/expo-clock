@@ -24,14 +24,14 @@ function TimeZonesDropdown() {
   };
 
   return (
-    <View className="absolute right-0">
+    <View className="sm:relative md:absolute right-0">
       <TextInput
         style={styles.search}
         value={searchValue}
         onChangeText={(value) => setSearchValue(value)}
         placeholder="Select a time zone"
       />
-      <View style={{ height: 300 }}>
+      <View style={{ maxHeight: 300 }}>
         {searchValue.length > 0 && (
           <FlatList
             keyExtractor={(item) => item}
@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   },
   separator: {
-    height: 4
+    backgroundColor: "#7b7b7b",
+    height: 2
   },
   search: {
     height: 50,
