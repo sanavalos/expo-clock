@@ -16,14 +16,14 @@ const App = () => {
   const timeZoneList = useTimeZoneStore((state) => state.timeZoneList);
 
   return (
-    <View className="flex-1 bg-gray-100 items-start justify-center py-5 px-20">
-      <View className="mb-20 flex">
+    <View className="flex-1 bg-gray-100 items-start justify-center py-5 sm:px-0 md:px-20 ">
+      <View className="mb-20 flex sm:self-center md:self-start">
         <TimeZoneSection />
         <ClockContainer />
       </View>
       <View className="flex w-full flex-col-reverse">
         <TimeZonesCards timeZoneList={timeZoneList} />
-        <View className="flex-row justify-between">
+        <View className="sm:flex-col md:flex-row justify-between mb-6">
           <Text className="text-4xl self-center">Time zones</Text>
           <TimeZonesDropdown />
         </View>
