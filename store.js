@@ -1,9 +1,14 @@
 import { create } from "zustand";
-import { timeZoneOptionList, hourOptionList } from "./utils/timezones";
+import {
+  timeZoneOptionList,
+  hourOptionList,
+  uniqueRegionsList
+} from "./utils/timezones";
 
 export const useTimeZoneStore = create((set) => ({
   timeZoneOptionSelected: timeZoneOptionList[0],
   hourOptionSelected: hourOptionList[0],
+  uniqueRegionsList: uniqueRegionsList,
   timeZoneList: [],
   setTimeZoneOptionSelected: (selectedOption) => {
     set(() => ({ timeZoneOptionSelected: selectedOption }));
