@@ -8,8 +8,22 @@ import {
 export const useTimeZoneStore = create((set) => ({
   timeZoneOptionSelected: timeZoneOptionList[0],
   hourOptionSelected: hourOptionList[0],
+  regionOptionSelected: [],
   uniqueRegionsList: uniqueRegionsList,
   timeZoneList: [],
+  setRegionOptionSelected: (filterOption) => {
+    set((state) =>
+      !state.regionOptionSelected.includes(filterOption)
+        ? {
+            regionOptionSelected: [...state.regionOptionSelected, filterOption]
+          }
+        : {
+            regionOptionSelected: state.regionOptionSelected.filter(
+              (region) => region !== filterOption
+            )
+          }
+    );
+  },
   setTimeZoneOptionSelected: (selectedOption) => {
     set(() => ({ timeZoneOptionSelected: selectedOption }));
   },
