@@ -11,6 +11,17 @@ export const useTimeZoneStore = create((set) => ({
   regionOptionSelected: [],
   uniqueRegionsList: uniqueRegionsList,
   timeZoneList: [],
+  filteredTimeZoneList: [],
+  setFilteredTimeZoneList: () => {
+    set((state) => {
+      let filter = state.timeZoneList.filter((timeZone) =>
+        state.regionOptionSelected.includes(timeZone.split("/")[0])
+      );
+      return {
+        filteredTimeZoneList: filter
+      };
+    });
+  },
   setRegionOptionSelected: (filterOption) => {
     set((state) =>
       !state.regionOptionSelected.includes(filterOption)
