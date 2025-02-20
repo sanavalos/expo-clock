@@ -5,6 +5,7 @@ import ClockContainer from "./components/ClockContainer";
 import TimeZonesDropdown from "./components/TimeZonesDropdown";
 import TimeZonesCards from "./components/TimeZonesCards";
 import TimeZoneSection from "./components/TimeZoneSection";
+import RegionsList from "./components/RegionsList";
 import { useTimeZoneStore } from "./store";
 
 // Snippet to fix nativewind for web: https://github.com/nativewind/nativewind/issues/470#issuecomment-1589092569
@@ -23,6 +24,7 @@ const App = () => {
       </View>
       <View className="flex w-full flex-col-reverse">
         <TimeZonesCards timeZoneList={timeZoneList} />
+        <RegionsList />
         <View className="sm:flex-col md:flex-row justify-between mb-6">
           <Text className="text-4xl self-center">Time zones</Text>
           <TimeZonesDropdown />
