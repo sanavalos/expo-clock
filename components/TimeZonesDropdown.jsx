@@ -5,11 +5,13 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  FlatList
+  FlatList,
+  Button
 } from "react-native";
 import { timeZonesList } from "../utils/timezones";
 import { formatTimeZone } from "../utils/formatters";
 import { useTimeZoneStore } from "../store";
+import TimeZoneSection from "./TimeZoneSection";
 
 function TimeZonesDropdown() {
   const addTimeZoneToList = useTimeZoneStore(
@@ -17,6 +19,7 @@ function TimeZonesDropdown() {
   );
 
   const [searchValue, setSearchValue] = useState("");
+  const [showOptions, setShowOptions] = useState(false);
 
   const onSelect = (newTimeZone) => {
     addTimeZoneToList(newTimeZone);
@@ -24,16 +27,31 @@ function TimeZonesDropdown() {
   };
 
   return (
-    <View className="sm:relative md:absolute right-0">
-      <TextInput
-        style={styles.search}
-        value={searchValue}
-        onChangeText={(value) => setSearchValue(value)}
-        placeholder="Select a time zone"
-      />
-      <View style={{ maxHeight: 300 }}>
+    <View className="right-0">
+      <View className="flex flex-row">
+        <TextInput
+          style={styles.search}
+          value={searchValue}
+          onChangeText={(value) => setSearchValue(value)}
+          placeholder="Select a time zone"
+        />
+        <Button
+          onPress={() => setShowOptions((prev) => !prev)}
+          title="Options"
+          accessibilityLabel="Options"
+        />
+      </View>
+      {showOptions && <TimeZoneSection />}
+      <View
+        style={{
+          maxHeight: 300,
+          position: "absolute",
+          width: "100%"
+        }}
+      >
         {searchValue.length > 0 && (
           <FlatList
+            className="mt-12"
             keyExtractor={(item) => item}
             data={timeZonesList.filter((tz) =>
               tz.toLowerCase().includes(searchValue.toLowerCase())
