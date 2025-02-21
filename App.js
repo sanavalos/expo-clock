@@ -4,7 +4,6 @@ import { NativeWindStyleSheet } from "nativewind";
 import ClockContainer from "./components/ClockContainer";
 import TimeZonesDropdown from "./components/TimeZonesDropdown";
 import TimeZonesCards from "./components/TimeZonesCards";
-import TimeZoneSection from "./components/TimeZoneSection";
 import RegionsList from "./components/RegionsList";
 import { useTimeZoneStore } from "./store";
 
@@ -22,7 +21,6 @@ const App = () => {
   return (
     <View className="flex-1 bg-gray-100 items-start justify-center py-5 sm:px-0 md:px-20 ">
       <View className="mb-20 flex sm:self-center md:self-start">
-        <TimeZoneSection />
         <ClockContainer />
       </View>
       <View className="flex w-full flex-col-reverse">
@@ -32,7 +30,7 @@ const App = () => {
         />
         <RegionsList />
         <View className="sm:flex-col md:flex-row justify-between mb-6">
-          <Text className="text-4xl self-center">Time zones</Text>
+          <Text className="text-4xl self-left">Time zones</Text>
           <TimeZonesDropdown />
         </View>
       </View>
