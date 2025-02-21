@@ -15,6 +15,9 @@ NativeWindStyleSheet.setOutput({
 
 const App = () => {
   const timeZoneList = useTimeZoneStore((state) => state.timeZoneList);
+  const filteredTimeZoneList = useTimeZoneStore(
+    (state) => state.filteredTimeZoneList
+  );
 
   return (
     <View className="flex-1 bg-gray-100 items-start justify-center py-5 sm:px-0 md:px-20 ">
@@ -23,7 +26,10 @@ const App = () => {
         <ClockContainer />
       </View>
       <View className="flex w-full flex-col-reverse">
-        <TimeZonesCards timeZoneList={timeZoneList} />
+        <TimeZonesCards
+          timeZoneList={timeZoneList}
+          filteredTimeZoneList={filteredTimeZoneList}
+        />
         <RegionsList />
         <View className="sm:flex-col md:flex-row justify-between mb-6">
           <Text className="text-4xl self-center">Time zones</Text>
