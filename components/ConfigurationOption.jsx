@@ -3,7 +3,7 @@ import { Text, View, CheckBox } from "react-native";
 
 function ConfigurationOption({ list, optionSelected, setOptionSelected }) {
   return (
-    <View>
+    <View className="flex-row">
       {list.map((option) => (
         <View className="flex-row" key={option.formatName}>
           <CheckBox
